@@ -1,0 +1,48 @@
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        // Step 1: Take user input for an amount in USD
+        System.out.print("Enter the amount in USD: ");
+        double usdAmount = scanner.nextDouble();
+        
+        // Step 2: Convert the amount into INR using an exchange rate (assuming 1 USD = 83.50 INR)
+        double exchangeRate = 83.50;
+        double inrAmount = usdAmount * exchangeRate;
+        
+        // Step 3: Demonstrate implicit (widening) conversion during multiplication
+        // Implicit conversion happens automatically when multiplying double values
+        
+        // Step 4: Demonstrate explicit (narrowing) conversion from double to int to get a rounded value
+        int roundedInrAmount = (int) inrAmount;
+        
+        // Display the results
+        System.out.println("\nConverted amount in INR (Double): " + inrAmount);
+        System.out.println("Converted amount in INR (Int, Rounded): " + roundedInrAmount);
+        
+        // Step 5: Examples of widening and narrowing conversions using byte, int, and double types
+        
+        // Widening Conversion (byte → int → double)
+        byte byteValue = 100;
+        int intValue = byteValue; // Implicit (widening) conversion from byte to int
+        double doubleValue = intValue; // Implicit (widening) conversion from int to double
+        
+        System.out.println("\nWidening Conversion:");
+        System.out.println("Byte to Int: " + intValue);
+        System.out.println("Int to Double: " + doubleValue);
+        
+        // Narrowing Conversion (double → int → byte)
+        double doubleAmount = 123.45;
+        int intAmount = (int) doubleAmount; // Explicit (narrowing) conversion from double to int
+        byte byteAmount = (byte) intAmount; // Explicit (narrowing) conversion from int to byte
+        
+        System.out.println("\nNarrowing Conversion:");
+        System.out.println("Double to Int: " + intAmount);
+        System.out.println("Int to Byte: " + byteAmount);
+        
+        scanner.close();
+    }
+}
