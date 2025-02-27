@@ -1,0 +1,75 @@
+import java.util.*;
+
+public class TextProcessing {
+
+    // String Concatenation
+    public static void concatenateStrings() {
+        long start, end;
+
+        // Using String
+        String str = "";
+        start = System.nanoTime();
+        for (int i = 0; i < 10000; i++) {
+            str += "Hello";
+        }
+        end = System.nanoTime();
+        System.out.println("String Concatenation Time: " + (end - start) + " ns");
+
+        // Using StringBuilder
+        StringBuilder sb = new StringBuilder();
+        start = System.nanoTime();
+        for (int i = 0; i < 10000; i++) {
+            sb.append("Hello");
+        }
+        end = System.nanoTime();
+        System.out.println("StringBuilder Concatenation Time: " + (end - start) + " ns");
+
+        // Using StringBuffer
+        StringBuffer sbf = new StringBuffer();
+        start = System.nanoTime();
+        for (int i = 0; i < 10000; i++) {
+            sbf.append("Hello");
+        }
+        end = System.nanoTime();
+        System.out.println("StringBuffer Concatenation Time: " + (end - start) + " ns");
+    }
+
+    // String Reversal
+    public static void reverseString(String input) {
+        StringBuilder sb = new StringBuilder(input);
+        System.out.println("Reversed String using StringBuilder: " + sb.reverse());
+
+        StringBuffer sbf = new StringBuffer(input);
+        System.out.println("Reversed String using StringBuffer: " + sbf.reverse());
+    }
+
+    // String Replacement
+    public static void replaceString(String input, String target, String replacement) {
+        String result = input.replace(target, replacement);
+        System.out.println("String Replacement using String: " + result);
+
+        StringBuilder sb = new StringBuilder(input);
+        int index;
+        while ((index = sb.indexOf(target)) != -1) {
+            sb.replace(index, index + target.length(), replacement);
+        }
+        System.out.println("String Replacement using StringBuilder: " + sb);
+
+        StringBuffer sbf = new StringBuffer(input);
+        while ((index = sbf.indexOf(target)) != -1) {
+            sbf.replace(index, index + target.length(), replacement);
+        }
+        System.out.println("String Replacement using StringBuffer: " + sbf);
+    }
+
+    public static void main(String[] args) {
+        System.out.println("String Concatenation Performance Comparison:");
+        concatenateStrings();
+
+        System.out.println("\nString Reversal Comparison:");
+        reverseString("Hello World");
+
+        System.out.println("\nString Replacement Comparison:");
+        replaceString("Hello World Hello", "Hello", "Hi");
+    }
+}
