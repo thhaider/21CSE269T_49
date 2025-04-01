@@ -1,0 +1,22 @@
+/*No, it won't compile.
+
+Java does not allow multiple annotations of the same type on a method.
+To fix it, use @Repeatable:*/
+
+import java.lang.annotation.*;
+
+@Repeatable(Meals.class)
+@interface Meal {
+    String mainDish();
+}
+
+@interface Meals {
+    Meal[] value();
+}
+
+class Diet {
+    @Meal(mainDish="cereal")
+    @Meal(mainDish="pizza")
+    @Meal(mainDish="salad")
+    public void evaluateDiet() {}
+}

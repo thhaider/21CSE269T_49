@@ -1,0 +1,9 @@
+//7. Removing Deprecated Warning in Interface
+//Use @SuppressWarnings("deprecation") in MyHouse class:
+public class MyHouse implements House {
+    @SuppressWarnings("deprecation")
+    public void open() {}
+
+    public void openFrontDoor() {}
+    public void openBackDoor() {}
+}
